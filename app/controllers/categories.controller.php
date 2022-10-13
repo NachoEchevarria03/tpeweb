@@ -7,7 +7,6 @@ require_once './app/models/categories.model.php';
 class categoriesController {
     private $model;
     private $view;
-    private $nada;
     
     public function __construct() {
         $this->model = new categoriesModel();
