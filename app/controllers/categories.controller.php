@@ -26,10 +26,35 @@ class categoriesController {
         $categories =$this->model->getCategories();
         if (isset($nombre) && !empty($nombre)){
         $this->model->addCategory($nombre);
-        header("Location: " . "categories"); 
+        header("Location: " . "categories");
         }else{
-            $this->view->showCategories($categories,"Ingrese un valor en el campo");
+            $this->view->showCategories($categories,"Complete el campo por favor!!");
         }
-        
+    }
+
+    function deleteCategory($id) {
+        $this->model->deleteCategoryById($id);
+        /*header("Location: " . "categories");**/
+        $categories =$this->model->getCategories();
+        $this->view->showCategories($categories); 
+    }
+
+    function showFormEditCategory($id) {
+        $category = $this->model->GetCat($id);
+        $this->view->showFormEditCategory($category);
+    }
+
+    function editCategory() {
+        $id = $_POST['id'];
+        $nombre = $_POST['categoria'];
+
+        $category = $this->model->GetCat($id);
+
+        if (isset($nombre) && !empty($nombre)) {
+            $this->model->editCategoryById($id, $nombre);
+            header("Location: " . "categories");
+        }else {
+            $this->view->showFormEditCategory($category,"Complete el campo por favor!!");
+        }
     }
 }

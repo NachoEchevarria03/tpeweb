@@ -4,7 +4,7 @@
 <form action="update" method="POST" class="my-4">
     <div class="col-3">
         <div class="form-group">
-            <input hidden name="id" value="{$product->id}" id="id">
+            <input hidden name="id" value="{$product->id}">
             <label>Nombre del producto</label>
             <input name="nombre" value="{$product->nombre}" type="text" class="form-control">
             <label>Talle</label>

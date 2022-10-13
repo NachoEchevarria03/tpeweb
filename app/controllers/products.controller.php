@@ -41,7 +41,7 @@ class productsController {
         $id = $this->model->insertProduct($nombre, $talle, $precio, $url, $id_categoria);
         header("Location: " . BASE_URL);
         }else{
-            $this->view->showProducts($productos, $categorias,"Ingrese todos los campos por favor!!");
+            $this->view->showProducts($productos, $categorias,"Complete todos los campos por favor!!");
         }
     }
     
@@ -72,7 +72,7 @@ class productsController {
         $this->model->editProductById($id,$nombre,$talle,$precio,$url,$id_categoria);
         header("Location: " . BASE_URL);   
         }else{
-            $this->view->showFormEdit($categories,$producto,"Ingrese todos los campos por favor!!");
+            $this->view->showFormEdit($categories,$producto,"Complete todos los campos por favor!!");
         }
     }
     

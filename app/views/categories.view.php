@@ -12,4 +12,9 @@ class categoriesView {
         $this->smarty->assign('error', $error);
         $this->smarty->display('categories.tpl');
     }
+    function showFormEditCategory($category, $error=null) {
+        $this->smarty->assign('category', $category);
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('form-edit-category.tpl');
+    }
 }

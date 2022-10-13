@@ -51,6 +51,16 @@ switch ($params[0]) {
     case 'addCategory':
         $categoriesController->addCategory();
         break;
+    case 'deleteCategory':
+        $id = $params[1];
+        $categoriesController->deleteCategory($id);
+        break;
+    case 'editCategory':
+        $categoriesController->showFormEditCategory($params[1]);
+        break;
+    case 'updateCategory':
+        $categoriesController->editCategory();
+        break;
     default:
         echo('404 Page not found');
         break;

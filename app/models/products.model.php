@@ -47,9 +47,9 @@ class productsModel {
     }
 
     function GetProd($id){
-        $sentencia = $this->db->prepare( "select p.id,p.nombre,p.talle,p.precio,p.url_imagen, p.id_categoria_fk ,c.categoria as categoria,c.id_categoria_fk from producto p join categoria c on p.id_categoria_fk=c.id_categoria_fk  WHERE id=?");
-        $sentencia -> execute(array($id));
-        $producto = $sentencia->fetch(PDO::FETCH_OBJ);
+        $query = $this->db->prepare( "select p.id,p.nombre,p.talle,p.precio,p.url_imagen, p.id_categoria_fk ,c.categoria as categoria,c.id_categoria_fk from producto p join categoria c on p.id_categoria_fk=c.id_categoria_fk  WHERE id=?");
+        $query -> execute(array($id));
+        $producto = $query->fetch(PDO::FETCH_OBJ);
         return $producto; 
     }
 

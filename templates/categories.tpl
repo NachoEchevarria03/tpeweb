@@ -7,8 +7,8 @@
     {foreach from=$categories item=$category}
         <li><a href="category/{$category->categoria}">{$category->categoria}</a>
         
-        <a href='delete/{$category->id_categoria_fk}' type='button' class='btn btn-danger'>Borrar</a>
-        <a href='edit/{$category->id_categoria_fk}'  type='button' class='btn btn-warning'>Editar</a>  
+        <a href='deleteCategory/{$category->id_categoria_fk}' type='button' class='btn btn-danger'>Borrar</a>
+        <a href='editCategory/{$category->id_categoria_fk}'  type='button' class='btn btn-warning'>Editar</a>  
         </li>
     {/foreach}
 
