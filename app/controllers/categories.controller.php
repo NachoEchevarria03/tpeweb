@@ -26,7 +26,7 @@ class categoriesController {
         $categories =$this->model->getCategories();
         if (isset($nombre) && !empty($nombre)){
         $this->model->addCategory($nombre);
-        header("Location: " . "categories");
+        $this->view->showListCategories();
         }else{
             $this->view->showCategories($categories,"Complete el campo por favor!!");
         }
@@ -34,13 +34,11 @@ class categoriesController {
 
     function deleteCategory($id) {
         $this->model->deleteCategoryById($id);
-        /*header("Location: " . "categories");**/
-        $categories =$this->model->getCategories();
-        $this->view->showCategories($categories); 
+        $this->view->showListCategories();
     }
 
     function showFormEditCategory($id) {
-        $category = $this->model->GetCat($id);
+        $category = $this->model->getCat($id);
         $this->view->showFormEditCategory($category);
     }
 
@@ -48,11 +46,11 @@ class categoriesController {
         $id = $_POST['id'];
         $nombre = $_POST['categoria'];
 
-        $category = $this->model->GetCat($id);
+        $category = $this->model->getCat($id);
 
         if (isset($nombre) && !empty($nombre)) {
             $this->model->editCategoryById($id, $nombre);
-            header("Location: " . "categories");
+            $this->view->showListCategories();
         }else {
             $this->view->showFormEditCategory($category,"Complete el campo por favor!!");
         }
