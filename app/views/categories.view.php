@@ -5,7 +5,7 @@ class categoriesView {
     private $smarty;
 
     public function __construct() {
-        $this->smarty = new Smarty(); //inicio smarty
+        $this->smarty = new Smarty();
     }
 
     function showCategories($categories, $error=null){

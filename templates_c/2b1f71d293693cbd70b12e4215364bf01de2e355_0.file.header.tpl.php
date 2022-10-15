@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2022-10-13 22:25:30
+/* Smarty version 4.2.1, created on 2022-10-15 22:00:48
   from 'C:\xampp\htdocs\web2\tpeweb\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6348743a7b28f9_62413996',
+  'unifunc' => 'content_634b1170a0a6a3_91593091',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2b1f71d293693cbd70b12e4215364bf01de2e355' => 
     array (
       0 => 'C:\\xampp\\htdocs\\web2\\tpeweb\\templates\\header.tpl',
-      1 => 1665690067,
+      1 => 1665864035,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6348743a7b28f9_62413996 (Smarty_Internal_Template $_smarty_tpl) {
+function content_634b1170a0a6a3_91593091 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +40,12 @@ function content_6348743a7b28f9_62413996 (Smarty_Internal_Template $_smarty_tpl)
             <div class="container-fluid">
                 <a class="navbar-brand"href="">ÑAGUCHI</a>
                 <a class="navbar-brand" href="categories">Categorias</a>
+                <?php if (!(isset($_SESSION['USER_ID']))) {?>
                 <a class="navbar-brand" href="login">Login</a>
+                <?php } else { ?> 
+                <a class="navbar-brand" href="logout">Logout - <?php echo $_SESSION['USER_EMAIL'];?>
+</a>
+                <?php }?>
             </div>
         </nav>
     </header>

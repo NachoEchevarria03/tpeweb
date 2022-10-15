@@ -2,22 +2,26 @@
 require_once './app/models/products.model.php';
 require_once './app/views/products.view.php';
 require_once './app/models/categories.model.php';
+require_once './app/helpers/auth.helper.php';
 
 
 class productsController {
     private $model;
     private $view;
     private $modelCategories;
+    private $authHelper;
 
 
     public function __construct() {
         $this->model = new productsModel();
         $this->view = new productsView();
         $this->modelCategories = new categoriesModel();
+        $this->authHelper = new authHelper();
     }
 
 
     public function showProducts() {
+        $this->authHelper->checkLoggedIn();
         $productos = $this->model->getAllProducts();
         $categorias = $this->modelCategories->getCategories();
         $this->view->showProducts($productos, $categorias);
@@ -25,11 +29,13 @@ class productsController {
 
     
     function showProductsByCategory($category) {
+        $this->authHelper->checkLoggedIn();
         $productos = $this->model->getProductsByCategories($category);
         $this->view->showProductsByCategories($productos, $category);
     }
 
     function addProduct() {
+        $this->authHelper->checkLoggedIn();
         $productos = $this->model->getAllProducts();
         $categorias = $this->modelCategories->getCategories();
         $nombre = $_POST['nombre'];
@@ -77,6 +83,7 @@ class productsController {
     }
     
     function showDetailProduct($id){
+        $this->authHelper->checkLoggedIn();
         $producto =$this->model->GetDetail($id);
         $this->view->showDetail($producto);
     }

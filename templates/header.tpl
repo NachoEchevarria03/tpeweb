@@ -16,7 +16,11 @@
             <div class="container-fluid">
                 <a class="navbar-brand"href="">ÑAGUCHI</a>
                 <a class="navbar-brand" href="categories">Categorias</a>
+                {if !isset($smarty.session.USER_ID)}
                 <a class="navbar-brand" href="login">Login</a>
+                {else} 
+                <a class="navbar-brand" href="logout">Logout - {$smarty.session.USER_EMAIL}</a>
+                {/if}
             </div>
         </nav>
     </header>

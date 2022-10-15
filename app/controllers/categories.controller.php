@@ -1,5 +1,4 @@
 <?php
-
 require_once './app/views/categories.view.php';
 require_once './app/models/categories.model.php';
 
@@ -7,21 +6,23 @@ require_once './app/models/categories.model.php';
 class categoriesController {
     private $model;
     private $view;
+    private $authHelper;
     
     public function __construct() {
         $this->model = new categoriesModel();
         $this->view = new categoriesView();
-       
+        $this->authHelper = new authHelper();
     }
 
     function showCategories(){
+        $this->authHelper->checkLoggedIn();
         $categories =$this->model->getCategories();
         $this->view->showCategories($categories);
     }
 
 
     function addCategory(){
-        
+        $this->authHelper->checkLoggedIn();
         $nombre = $_POST['categoria'];
         $categories =$this->model->getCategories();
         if (isset($nombre) && !empty($nombre)){

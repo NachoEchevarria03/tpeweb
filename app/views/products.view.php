@@ -5,7 +5,7 @@ class productsView {
     private $smarty;
 
     public function __construct() {
-        $this->smarty = new Smarty(); //inicio smarty
+        $this->smarty = new Smarty();
     }
 
     function showProducts($products, $categories,$error=null) {
