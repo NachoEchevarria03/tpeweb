@@ -1,8 +1,16 @@
 <?php
 
-class authHelper {
+class AuthHelper{
 
-    public function checkLoggedIn() {
-        session_start();
-    } 
+    function __construct(){
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+    }
+
+    function checkLoggedIn(){
+        if(!isset($_SESSION["email"])){
+            header("Location:".BASE_URL. "login"); 
+        }
+    }
 }

@@ -21,7 +21,6 @@ class productsController {
 
 
     public function showProducts() {
-        $this->authHelper->checkLoggedIn();
         $productos = $this->model->getAllProducts();
         $categorias = $this->modelCategories->getCategories();
         $this->view->showProducts($productos, $categorias);
@@ -29,7 +28,6 @@ class productsController {
 
     
     function showProductsByCategory($category) {
-        $this->authHelper->checkLoggedIn();
         $productos = $this->model->getProductsByCategories($category);
         $this->view->showProductsByCategories($productos, $category);
     }
@@ -53,17 +51,20 @@ class productsController {
     
 
     function deleteProduct($id) {
+        $this->authHelper->checkLoggedIn();
         $this->model->deleteProductById($id);
         header("Location: " . BASE_URL);    
     }
 
     function showFormEdit($id) {
+        $this->authHelper->checkLoggedIn();
         $categories = $this->modelCategories->getCategories();
         $producto = $this->model->GetProd($id);
         $this->view->showFormEdit($categories,$producto);
     }
 
     function editProduct() {
+        $this->authHelper->checkLoggedIn();
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
         $talle = $_POST['talle'];
@@ -83,7 +84,6 @@ class productsController {
     }
     
     function showDetailProduct($id){
-        $this->authHelper->checkLoggedIn();
         $producto =$this->model->GetDetail($id);
         $this->view->showDetail($producto);
     }

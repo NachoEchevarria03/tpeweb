@@ -1,6 +1,7 @@
 <?php
 require_once './app/views/categories.view.php';
 require_once './app/models/categories.model.php';
+require_once './app/helpers/auth.helper.php';
 
 
 class categoriesController {
@@ -15,7 +16,6 @@ class categoriesController {
     }
 
     function showCategories(){
-        $this->authHelper->checkLoggedIn();
         $categories =$this->model->getCategories();
         $this->view->showCategories($categories);
     }
@@ -34,16 +34,19 @@ class categoriesController {
     }
 
     function deleteCategory($id) {
+        $this->authHelper->checkLoggedIn();
         $this->model->deleteCategoryById($id);
         $this->view->showListCategories();
     }
 
     function showFormEditCategory($id) {
+        $this->authHelper->checkLoggedIn();
         $category = $this->model->getCat($id);
         $this->view->showFormEditCategory($category);
     }
 
     function editCategory() {
+        $this->authHelper->checkLoggedIn();
         $id = $_POST['id'];
         $nombre = $_POST['categoria'];
 
