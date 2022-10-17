@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-10-2022 a las 22:21:37
+-- Tiempo de generación: 17-10-2022 a las 20:08:54
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -41,7 +41,8 @@ INSERT INTO `categoria` (`id_categoria_fk`, `categoria`) VALUES
 (2, 'Remera'),
 (3, 'Buzo'),
 (4, 'Pantalon'),
-(6, 'Zapatilla');
+(6, 'Zapatilla'),
+(23, 'Short');
 
 -- --------------------------------------------------------
 
@@ -57,6 +58,38 @@ CREATE TABLE `producto` (
   `url_imagen` varchar(250) NOT NULL,
   `id_categoria_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id`, `nombre`, `talle`, `precio`, `url_imagen`, `id_categoria_fk`) VALUES
+(17, 'City Morgue x Vlone Dogs Hoodie White', 'XL', 35600, 'citymorguehoodie.jpg', 3),
+(18, 'Mitchell & Ness Los Angeles Lakers HWC Snapback Black/Blue', '1', 13400, 'gorrala.jpg', 1),
+(19, 'Jordan 1 Retro High J Balvin', '10', 87000, 'j1balvin.jpg', 6),
+(21, ' Nike SB Dunk Low Club 58 Gulf', '9.5', 68000, 'nikesbclub58.jpg', 6),
+(22, 'Nike SB x Parra Pants Multicolor', 'M', 32000, 'nikesbxparrapant.jpg', 4),
+(25, 'Eric Emanuel x Warren Lotas Basic Short Yellow', 'L', 24000, 'ericemanuelshort.jpg', 23),
+(64, 'Jordan x J Balvin T-shirt Black', 'L', 28000, 'jbalvinshirt.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contraseña` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `email`, `contraseña`) VALUES
+(1, 'nachoEchevarria03@gmail.com', '$2a$12$XTybpPO4PMoV8r/lHpyNze/vdjy9pI93fUEpxe3EDnaev9qwNnTeW');
 
 --
 -- Índices para tablas volcadas
@@ -76,6 +109,12 @@ ALTER TABLE `producto`
   ADD KEY `id_categoria_fk` (`id_categoria_fk`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -83,13 +122,19 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria_fk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_categoria_fk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
