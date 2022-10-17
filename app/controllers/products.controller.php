@@ -51,9 +51,12 @@ class productsController {
     
 
     function deleteProduct($id) {
-        $this->authHelper->checkLoggedIn();
+        if(isset($_SESSION["USER_EMAIL"])){
         $this->model->deleteProductById($id);
-        header("Location: " . BASE_URL);    
+        header("Location: " . BASE_URL);
+        } else {
+            header("Location:".BASE_URL. "login");
+        }    
     }
 
     function showFormEdit($id) {

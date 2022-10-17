@@ -34,9 +34,12 @@ class categoriesController {
     }
 
     function deleteCategory($id) {
-        $this->authHelper->checkLoggedIn();
+        if(isset($_SESSION["USER_EMAIL"])){
         $this->model->deleteCategoryById($id);
         $this->view->showListCategories();
+        } else {
+            header("Location:".BASE_URL. "login");
+        }
     }
 
     function showFormEditCategory($id) {

@@ -9,7 +9,7 @@ class AuthHelper{
     }
 
     function checkLoggedIn(){
-        if(!isset($_SESSION["email"])){
+        if(!isset($_SESSION["USER_EMAIL"])){
             header("Location:".BASE_URL. "login"); 
         }
     }
