@@ -18,14 +18,14 @@ class productsView {
     }
 
     
-    function showProductsByCategories($productos, $category){
-        $this->smarty->assign('products', $productos);
+    function showProductsByCategories($products, $category){
+        $this->smarty->assign('products', $products);
         $this->smarty->assign('category', $category);
         $this->smarty->display('productsByCategory.tpl');
     }
     
-    function showDetail($producto){
-        $this->smarty->assign('products', $producto);  
+    function showDetail($product){
+        $this->smarty->assign('products', $product);  
         $this->smarty->display('productsDetail.tpl');
     }
 

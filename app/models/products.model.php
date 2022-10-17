@@ -17,10 +17,10 @@ class productsModel {
     }
 
     function getProductsByCategories($categoria){
-        $query = $this->db->prepare( "select p.id, p.nombre, p.talle, p.precio, p.url_imagen, c.id_categoria_fk as categoria from producto p join categoria c on p.id_categoria_fk=c.id_categoria_fk  WHERE categoria=?");
+        $query = $this->db->prepare( "SELECT p.id, p.nombre, p.talle, p.precio, p.url_imagen, c.id_categoria_fk AS categoria FROM producto p JOIN categoria c ON p.id_categoria_fk=c.id_categoria_fk  WHERE categoria=?");
         $query -> execute([$categoria]);
-        $productos = $query->fetchAll(PDO::FETCH_OBJ); 
-        return $productos;
+        $products = $query->fetchAll(PDO::FETCH_OBJ); 
+        return $products;
     }
 
     function insertProduct($nombre, $talle, $precio, $url, $id_categoria) {
@@ -39,18 +39,18 @@ class productsModel {
     }
 
 
-    function GetDetail($id){
+    function getDetail($id){
         $query = $this->db->prepare("SELECT p.*, c.* FROM producto p INNER JOIN categoria c ON p.id_categoria_fk = c.id_categoria_fk WHERE id=?");
         $query->execute([$id]);
-        $producto = $query->fetchALL(PDO::FETCH_OBJ); 
-        return $producto;
+        $product = $query->fetchALL(PDO::FETCH_OBJ); 
+        return $product;
     }
 
-    function GetProd($id){
-        $query = $this->db->prepare( "select p.id,p.nombre,p.talle,p.precio,p.url_imagen, p.id_categoria_fk ,c.categoria as categoria,c.id_categoria_fk from producto p join categoria c on p.id_categoria_fk=c.id_categoria_fk  WHERE id=?");
-        $query -> execute(array($id));
-        $producto = $query->fetch(PDO::FETCH_OBJ);
-        return $producto; 
+    function getProd($id){
+        $query = $this->db->prepare( "SELECT p.id,p.nombre,p.talle,p.precio,p.url_imagen, p.id_categoria_fk ,c.categoria AS categoria,c.id_categoria_fk FROM producto p JOIN categoria c ON p.id_categoria_fk=c.id_categoria_fk  WHERE id=?");
+        $query -> execute([$id]);
+        $product = $query->fetch(PDO::FETCH_OBJ);
+        return $product; 
     }
 
    
